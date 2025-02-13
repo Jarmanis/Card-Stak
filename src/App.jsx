@@ -170,6 +170,7 @@ function App() {
           <TransactionChart entries={entries} />
         </div>
         <div className="entries-list">
+          <h3>Card Transactions</h3>
           {entries.map(entry => (
             <div key={entry.TransactionID} className="entry-item">
               <span>{entry.date}</span>
