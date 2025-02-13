@@ -10,7 +10,7 @@ function App() {
   const client = new DynamoDBClient({
     region: "us-east-1",
     credentials: fromCognitoIdentityPool({
-      identityPoolId: "your-identity-pool-id",
+      identityPoolId: "us-east-1:fe419dca-de50-4bdb-9887-50a93e412a64",
       clientConfig: { region: "us-east-1" }
     })
   });
