@@ -116,11 +116,11 @@ function App() {
 
         <div className="entries-list">
           {entries.map(entry => (
-            <div key={entry.id} className="entry-item">
+            <div key={entry.TransactionID} className="entry-item">
               <span>{entry.date}</span>
               <span>${entry.cost}</span>
               <span>{entry.title}</span>
-              <button onClick={() => handleDelete(entry.id)} className="delete-btn">Delete</button>
+              <button onClick={() => handleDelete(entry.TransactionID)} className="delete-btn">Delete</button>
             </div>
           ))}
         </div>
