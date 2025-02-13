@@ -57,7 +57,12 @@ export function TransactionChart({ entries }) {
       tooltip: {
         callbacks: {
           label: function(context) {
-            return `Total: $${context.parsed.y.toFixed(2)}`;
+            const dataIndex = context.dataIndex;
+            const entry = sortedEntries[dataIndex];
+            return [
+              `Title: ${entry.title}`,
+              `Total: $${context.parsed.y.toFixed(2)}`
+            ];
           }
         }
       }
