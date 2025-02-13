@@ -169,6 +169,10 @@ function App() {
         <div className="chart-container">
           <TransactionChart entries={entries} />
         </div>
+        <div className="top-nav">
+          <button className="logout-btn" onClick={() => auth.removeUser()}>Sign out</button>
+        </div>
+        
         <div className="entries-list">
           <h3>Card Transactions</h3>
           {entries.map(entry => (
@@ -180,8 +184,6 @@ function App() {
             </div>
           ))}
         </div>
-
-        <button className="logout-btn" onClick={() => auth.removeUser()}>Sign out</button>
       </div>
     );
   }
