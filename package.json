@@ -24,7 +24,9 @@
     "@aws-sdk/client-dynamodb": "^3.744.0",
     "@aws-sdk/credential-providers": "^3.744.0",
     "@aws-sdk/lib-dynamodb": "^3.744.0",
+    "chart.js": "^4.4.7",
     "oidc-client-ts": "^3.1.0",
+    "react-chartjs-2": "^5.3.0",
     "react-oidc-context": "^3.2.0"
   }
 }

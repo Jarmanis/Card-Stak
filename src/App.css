@@ -60,3 +60,11 @@
 .delete-btn:hover {
   background-color: #cc0000;
 }
+
+.chart-container {
+  margin: 20px 0;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}

@@ -1,6 +1,7 @@
 // App.js
 import React from 'react';
 import { useAuth } from "react-oidc-context";
+import { TransactionChart } from './TransactionChart';
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient, PutCommand } from "@aws-sdk/lib-dynamodb";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
@@ -163,6 +164,9 @@ function App() {
           <button type="submit">Submit</button>
         </form>
 
+        <div className="chart-container">
+          <TransactionChart entries={entries} />
+        </div>
         <div className="entries-list">
           {entries.map(entry => (
             <div key={entry.TransactionID} className="entry-item">
