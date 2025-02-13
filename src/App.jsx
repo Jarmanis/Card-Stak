@@ -4,6 +4,28 @@ import { useAuth } from "react-oidc-context";
 
 function App() {
   const auth = useAuth();
+  const [formData, setFormData] = React.useState({
+    date: '',
+    cost: '',
+    title: ''
+  });
+  const [entries, setEntries] = React.useState([]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.date && formData.cost && formData.title) {
+      setEntries(prev => [...prev, { ...formData, id: Date.now() }]);
+      setFormData({ date: '', cost: '', title: '' });
+    }
+  };
 
   const signOutRedirect = () => {
     const clientId = "5gh0dubj45gj1oo07ptsiu05ks";
@@ -22,17 +44,47 @@ function App() {
 
   if (auth.isAuthenticated) {
     return (
-      <div>
-        <pre> Hello: {auth.user?.profile.email} </pre>
-        <pre> ID Token: {auth.user?.id_token} </pre>
-        <pre> Access Token: {auth.user?.access_token} </pre>
-        <pre> Refresh Token: {auth.user?.refresh_token} </pre>
-        <input type="date" placeholder="Date"></input>
-        <input type="number" placeholder="USD$"></input>
-        <input type="text" placeholder="Title of transaction"></input>
-        <br></br>
-        <button type="submit">Submit</button>
-        <button onClick={() => auth.removeUser()}>Sign out</button>
+      <div className="dashboard">
+        <h2>Welcome, {auth.user?.profile.email}</h2>
+        
+        <form onSubmit={handleSubmit} className="input-form">
+          <input
+            type="date"
+            name="date"
+            value={formData.date}
+            onChange={handleInputChange}
+            required
+          />
+          <input
+            type="number"
+            name="cost"
+            value={formData.cost}
+            onChange={handleInputChange}
+            placeholder="USD$"
+            required
+          />
+          <input
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleInputChange}
+            placeholder="Title of transaction"
+            required
+          />
+          <button type="submit">Submit</button>
+        </form>
+
+        <div className="entries-list">
+          {entries.map(entry => (
+            <div key={entry.id} className="entry-item">
+              <span>{entry.date}</span>
+              <span>${entry.cost}</span>
+              <span>{entry.title}</span>
+            </div>
+          ))}
+        </div>
+        
+        <button className="logout-btn" onClick={() => auth.removeUser()}>Sign out</button>
       </div>
     );
   }
