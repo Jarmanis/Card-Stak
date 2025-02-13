@@ -26,6 +26,32 @@ function App() {
   });
   const [entries, setEntries] = React.useState([]);
 
+  const fetchEntries = async () => {
+    if (!auth.user?.profile.email) return;
+    
+    try {
+      const { QueryCommand } = await import('@aws-sdk/lib-dynamodb');
+      const command = new QueryCommand({
+        TableName: import.meta.env.VITE_DYNAMODB_TABLE,
+        KeyConditionExpression: "UserID = :userId",
+        ExpressionAttributeValues: {
+          ":userId": auth.user.profile.email
+        }
+      });
+      
+      const result = await dynamoDb.send(command);
+      setEntries(result.Items || []);
+    } catch (error) {
+      console.error('Error fetching entries:', error);
+    }
+  };
+
+  React.useEffect(() => {
+    if (auth.isAuthenticated) {
+      fetchEntries();
+    }
+  }, [auth.isAuthenticated]);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -60,7 +86,7 @@ function App() {
         const result = await dynamoDb.send(command);
         console.log('DynamoDB response:', result);
 
-        setEntries(prev => [...prev, entry]);
+        await fetchEntries();
         setFormData({ date: '', cost: '', title: '' });
         alert('Entry saved successfully!');
       } catch (error) {
