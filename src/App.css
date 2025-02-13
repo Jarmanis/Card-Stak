@@ -30,10 +30,16 @@
   margin: 20px 0;
 }
 
-.input-form input {
+.input-form input,
+.input-form select {
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
+}
+
+.input-form select {
+  background-color: white;
+  cursor: pointer;
 }
 
 .input-form button {

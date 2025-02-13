@@ -24,7 +24,8 @@ function App() {
   const [formData, setFormData] = React.useState({
     date: '',
     cost: '',
-    title: ''
+    title: '',
+    type: 'purchase'
   });
   const [entries, setEntries] = React.useState([]);
 
@@ -73,7 +74,8 @@ function App() {
         TransactionID: transactionId,
         date: formData.date,
         cost: parseFloat(formData.cost),
-        title: formData.title
+        title: formData.title,
+        type: formData.type || 'purchase'
       };
 
       try {
@@ -166,6 +168,15 @@ function App() {
             placeholder="Title of transaction"
             required
           />
+          <select
+            name="type"
+            value={formData.type}
+            onChange={handleInputChange}
+            required
+          >
+            <option value="purchase">Purchase</option>
+            <option value="sale">Sale</option>
+          </select>
           <button type="submit">Submit</button>
         </form>
 
