@@ -13,7 +13,7 @@ function App() {
       identityPoolId: "us-east-1:fe419dca-de50-4bdb-9887-50a93e412a64",
       clientConfig: { region: "us-east-1" },
       logins: {
-        'cognito-idp.us-east-1.amazonaws.com/us-east-1_nuni86pdc': auth.user?.access_token
+        'cognito-idp.us-east-1.amazonaws.com/us-east-1_nuni86pdc': auth.user?.id_token
       }
     })
   });
