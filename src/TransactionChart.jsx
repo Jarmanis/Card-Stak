@@ -25,12 +25,19 @@ ChartJS.register(
 export function TransactionChart({ entries }) {
   const sortedEntries = [...entries].sort((a, b) => new Date(a.date) - new Date(b.date));
   
+  // Calculate cumulative values
+  let runningTotal = 0;
+  const cumulativeData = sortedEntries.map(entry => {
+    runningTotal += entry.cost;
+    return runningTotal;
+  });
+  
   const data = {
     labels: sortedEntries.map(entry => entry.date),
     datasets: [
       {
-        label: 'Transaction Amount ($)',
-        data: sortedEntries.map(entry => entry.cost),
+        label: 'Cumulative Spending ($)',
+        data: cumulativeData,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1
       }
@@ -45,12 +52,24 @@ export function TransactionChart({ entries }) {
       },
       title: {
         display: true,
-        text: 'Transaction History'
+        text: 'Cumulative Transaction History'
+      },
+      tooltip: {
+        callbacks: {
+          label: function(context) {
+            return `Total: $${context.parsed.y.toFixed(2)}`;
+          }
+        }
       }
     },
     scales: {
       y: {
-        beginAtZero: true
+        beginAtZero: true,
+        ticks: {
+          callback: function(value) {
+            return '$' + value;
+          }
+        }
       }
     }
   };
