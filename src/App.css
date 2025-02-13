@@ -99,9 +99,16 @@
 }
 
 .entry-item span:nth-child(2) {
-  color: #2ecc71;
   font-weight: 600;
   text-align: center;
+}
+
+.entry-item span:nth-child(2)[style*="color: red"] {
+  color: #e74c3c !important;
+}
+
+.entry-item span:nth-child(2)[style*="color: green"] {
+  color: #2ecc71 !important;
 }
 
 .entry-item span:nth-child(3) {
