@@ -28,14 +28,36 @@
 
 .entries-list {
   margin-top: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 15px;
 }
 
 .entry-item {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 5px;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #eef0f2;
+  margin-bottom: 8px;
+  transition: background-color 0.2s ease;
+  border-radius: 6px;
+}
+
+.entry-item:hover {
+  background-color: #f8f9fa;
+}
+
+.entry-item span {
+  flex: 1;
+  padding: 0 10px;
+  font-size: 15px;
+}
+
+.entry-item span:nth-child(2) {
+  color: #2c3e50;
+  font-weight: 600;
 }
 
 .logout-btn {
