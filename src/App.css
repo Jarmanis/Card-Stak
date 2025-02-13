@@ -109,6 +109,24 @@
   font-weight: 500;
 }
 
+.type-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.type-badge.purchase {
+  background-color: #ff7675;
+  color: white;
+}
+
+.type-badge.sale {
+  background-color: #00b894;
+  color: white;
+}
+
 
 
 .delete-btn {

@@ -194,6 +194,7 @@ function App() {
               <span>{entry.date}</span>
               <span>${entry.cost}</span>
               <span>{entry.title}</span>
+              <span className={`type-badge ${entry.type}`}>{entry.type}</span>
               <button onClick={() => handleDelete(entry.TransactionID)} className="delete-btn">Delete</button>
             </div>
           ))}
