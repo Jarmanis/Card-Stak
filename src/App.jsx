@@ -1,10 +1,11 @@
-// App.js
 import React from 'react';
 import { useAuth } from "react-oidc-context";
 import { TransactionChart } from './TransactionChart';
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient, PutCommand } from "@aws-sdk/lib-dynamodb";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
+import './App.css';
+
 
 function App() {
   const auth = useAuth();
@@ -137,7 +138,9 @@ function App() {
       <div className="dashboard">
         {/* <h2>Welcome, {auth.user?.profile.email}</h2> */}
         <h2 className='page-title'>Welcome to Card Stak</h2>
-
+        <div className="top-nav">
+          <button className="logout-btn" onClick={() => auth.removeUser()}>Sign out</button>
+        </div>
         <form onSubmit={handleSubmit} className="input-form">
           <h3>Input Card Transaction</h3>
           <input
@@ -169,9 +172,9 @@ function App() {
         <div className="chart-container">
           <TransactionChart entries={entries} />
         </div>
-        <div className="top-nav">
+        {/* <div className="top-nav">
           <button className="logout-btn" onClick={() => auth.removeUser()}>Sign out</button>
-        </div>
+        </div> */}
         
         <div className="entries-list">
           <h3>Card Transactions</h3>
@@ -189,9 +192,10 @@ function App() {
   }
 
   return (
-    <div>
-      <button onClick={() => auth.signinRedirect()}>Sign in</button>
-      <button onClick={() => signOutRedirect()}>Sign out</button>
+    <div className='login-page'>
+      <h1 className='login-title'>Card Stak</h1>
+      <button className='login-button' onClick={() => auth.signinRedirect()}>Sign in</button>
+      <button className='login-button' onClick={() => signOutRedirect()}>Sign out</button>
     </div>
   );
 }
