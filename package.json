@@ -21,6 +21,8 @@
     "vite": "^5.0.0"
   },
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.744.0",
+    "@aws-sdk/lib-dynamodb": "^3.744.0",
     "oidc-client-ts": "^3.1.0",
     "react-oidc-context": "^3.2.0"
   }
