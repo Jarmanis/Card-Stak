@@ -127,6 +127,8 @@
 .type-badge.purchase {
   background-color: #ff7675;
   color: white;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 .type-badge.sale {
