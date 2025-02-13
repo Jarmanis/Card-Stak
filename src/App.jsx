@@ -19,11 +19,32 @@ function App() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.date && formData.cost && formData.title) {
-      setEntries(prev => [...prev, { ...formData, id: Date.now() }]);
-      setFormData({ date: '', cost: '', title: '' });
+      const transactionId = Date.now().toString();
+      const userId = auth.user?.profile.email;
+
+      const entry = {
+        UserID: userId,
+        TransactionID: transactionId,
+        date: formData.date,
+        cost: formData.cost,
+        title: formData.title
+      };
+
+      try {
+        await dynamoDb.send(new PutCommand({
+          TableName: import.meta.env.VITE_DYNAMODB_TABLE,
+          Item: entry
+        }));
+
+        setEntries(prev => [...prev, entry]);
+        setFormData({ date: '', cost: '', title: '' });
+      } catch (error) {
+        console.error('Error saving to DynamoDB:', error);
+        alert('Failed to save entry');
+      }
     }
   };
 
@@ -50,7 +71,7 @@ function App() {
     return (
       <div className="dashboard">
         <h2>Welcome, {auth.user?.profile.email}</h2>
-        
+
         <form onSubmit={handleSubmit} className="input-form">
           <input
             type="date"
@@ -88,7 +109,7 @@ function App() {
             </div>
           ))}
         </div>
-        
+
         <button className="logout-btn" onClick={() => auth.removeUser()}>Sign out</button>
       </div>
     );
