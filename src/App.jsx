@@ -135,9 +135,11 @@ function App() {
   if (auth.isAuthenticated) {
     return (
       <div className="dashboard">
-        <h2>Welcome, {auth.user?.profile.email}</h2>
+        {/* <h2>Welcome, {auth.user?.profile.email}</h2> */}
+        <h2 className='page-title'>Welcome to Card Stak</h2>
 
         <form onSubmit={handleSubmit} className="input-form">
+          <h3>Input Card Transaction</h3>
           <input
             type="date"
             name="date"

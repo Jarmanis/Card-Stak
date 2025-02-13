@@ -36,7 +36,7 @@ export function TransactionChart({ entries }) {
     labels: sortedEntries.map(entry => entry.date),
     datasets: [
       {
-        label: 'Cumulative Spending ($)',
+        label: 'Cumulative Transactions ($)',
         data: cumulativeData,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1
@@ -52,7 +52,7 @@ export function TransactionChart({ entries }) {
       },
       title: {
         display: true,
-        text: 'Cumulative Transaction History'
+        text: 'Transaction Tracker'
       },
       tooltip: {
         callbacks: {
