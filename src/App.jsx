@@ -44,21 +44,29 @@ function App() {
         UserID: userId,
         TransactionID: transactionId,
         date: formData.date,
-        cost: formData.cost,
+        cost: parseFloat(formData.cost),
         title: formData.title
       };
 
       try {
-        await dynamoDb.send(new PutCommand({
+        console.log('Saving to DynamoDB:', entry);
+        console.log('Table name:', import.meta.env.VITE_DYNAMODB_TABLE);
+        
+        const command = new PutCommand({
           TableName: import.meta.env.VITE_DYNAMODB_TABLE,
           Item: entry
-        }));
+        });
+        
+        const result = await dynamoDb.send(command);
+        console.log('DynamoDB response:', result);
 
         setEntries(prev => [...prev, entry]);
         setFormData({ date: '', cost: '', title: '' });
+        alert('Entry saved successfully!');
       } catch (error) {
         console.error('Error saving to DynamoDB:', error);
-        alert('Failed to save entry');
+        console.error('Error details:', JSON.stringify(error, null, 2));
+        alert(`Failed to save entry: ${error.message}`);
       }
     }
   };
