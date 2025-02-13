@@ -97,8 +97,23 @@ function App() {
     }
   };
 
-  const handleDelete = (id) => {
-    setEntries(prev => prev.filter(entry => entry.id !== id));
+  const handleDelete = async (transactionId) => {
+    try {
+      const { DeleteCommand } = await import('@aws-sdk/lib-dynamodb');
+      const command = new DeleteCommand({
+        TableName: import.meta.env.VITE_DYNAMODB_TABLE,
+        Key: {
+          UserID: auth.user?.profile.email,
+          TransactionID: transactionId
+        }
+      });
+      
+      await dynamoDb.send(command);
+      await fetchEntries();
+    } catch (error) {
+      console.error('Error deleting entry:', error);
+      alert(`Failed to delete entry: ${error.message}`);
+    }
   };
 
   const signOutRedirect = () => {
