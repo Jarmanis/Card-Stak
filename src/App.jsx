@@ -27,6 +27,10 @@ function App() {
     }
   };
 
+  const handleDelete = (id) => {
+    setEntries(prev => prev.filter(entry => entry.id !== id));
+  };
+
   const signOutRedirect = () => {
     const clientId = "5gh0dubj45gj1oo07ptsiu05ks";
     const logoutUri = "<logout uri>";
@@ -80,6 +84,7 @@ function App() {
               <span>{entry.date}</span>
               <span>${entry.cost}</span>
               <span>{entry.title}</span>
+              <button onClick={() => handleDelete(entry.id)} className="delete-btn">Delete</button>
             </div>
           ))}
         </div>
