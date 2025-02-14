@@ -144,7 +144,7 @@ function App() {
           <button className="logout-btn" onClick={() => auth.removeUser()}>Sign out</button>
         </div>
         <form onSubmit={handleSubmit} className="input-form">
-          <h3>Input Card Transaction</h3>
+          <h3 className='input-form'>Input Card Transaction</h3>
           <input
             type="date"
             name="date"
