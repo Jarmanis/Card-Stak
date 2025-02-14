@@ -12,6 +12,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -38,7 +39,7 @@ export function TransactionChart({ entries }) {
       {
         label: 'Cumulative Transactions ($)',
         data: cumulativeData,
-        borderColor: 'rgb(75, 192, 192)',
+        borderColor: 'rgb(76, 175, 80)',
         tension: 0.1
       }
     ]
