@@ -28,6 +28,7 @@ function App() {
     type: 'purchase'
   });
   const [entries, setEntries] = React.useState([]);
+  const [showAlert, setShowAlert] = React.useState(false);
 
   const fetchEntries = async () => {
     if (!auth.user?.profile.email) return;
@@ -91,8 +92,9 @@ function App() {
         console.log('DynamoDB response:', result);
 
         await fetchEntries();
-        setFormData({ date: '', cost: '', title: '' });
-        alert('Entry saved successfully!');
+        setFormData({ date: '', cost: '', title: '', type: 'purchase' });
+        setShowAlert(true);
+        setTimeout(() => setShowAlert(false), 3000);
       } catch (error) {
         console.error('Error saving to DynamoDB:', error);
         console.error('Error details:', JSON.stringify(error, null, 2));
@@ -138,6 +140,7 @@ function App() {
   if (auth.isAuthenticated) {
     return (
       <div className="dashboard">
+        {showAlert && <div className="custom-alert">Entry saved successfully!</div>}
         {/* <h2>Welcome, {auth.user?.profile.email}</h2> */}
         <h2 className='page-title'>Welcome to Card Stak</h2>
         <div className="top-nav">
