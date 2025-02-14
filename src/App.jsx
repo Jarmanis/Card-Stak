@@ -206,8 +206,10 @@ function App() {
   return (
     <div className='login-page'>
       <h1 className='login-title'>Card Stak</h1>
-      <button className='login-button' onClick={() => auth.signinRedirect()}>Sign in</button>
-      <button className='login-button' onClick={() => signOutRedirect()}>Sign out</button>
+      <div className='login-buttons'>
+        <button className='login-button' onClick={() => auth.signinRedirect()}>Sign in</button>
+        <button className='login-button' onClick={() => signOutRedirect()}>Sign out</button>
+      </div>
     </div>
   );
 }
