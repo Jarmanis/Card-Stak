@@ -1,7 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
-import { Dialog, DialogPanel } from '@headlessui/react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+// import { useState } from 'react';
+// import { Dialog, DialogPanel } from '@headlessui/react';
+// import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useAuth } from "react-oidc-context";
 import { TransactionChart } from './TransactionChart';
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
@@ -9,14 +9,14 @@ import { DynamoDBDocumentClient, PutCommand } from "@aws-sdk/lib-dynamodb";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
 import './App.css';
 
-const navigation = [
+// const navigation = [
 
 
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
-]
+//   { name: 'Product', href: '#' },
+//   { name: 'Features', href: '#' },
+//   { name: 'Marketplace', href: '#' },
+//   { name: 'Company', href: '#' },
+// ]
 
 
 function App() {
@@ -218,16 +218,89 @@ function App() {
     );
   }
 
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  // const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className='login-page'>
-      <h1 className='login-title'>Card Stak</h1>
-      <div className='login-buttons'>
-        <button className='login-button' onClick={() => auth.signinRedirect()}>Sign in</button>
-        <button className='login-button' onClick={() => signOutRedirect()}>Sign out</button>
-      </div>
-    </div>
+
+        <div className="App">
+          <header className="header">
+            <div className="container">
+              <h1 className='landing-title'>Card Stak</h1>
+              <nav>
+                <ul>
+                  <li><a href="#features">Features</a></li>
+                  <li><a href="#pricing">Pricing</a></li>
+                  <li><a href="#get-started">Get Started</a></li>
+                </ul>
+              </nav>
+            </div>
+          </header>
+
+          <section className="hero">
+            <div className="container">
+              <h2>Track Your Profits, Visualize Your Collection's Financial Growth</h2>
+              <p>Card Stak helps you manage your trading card collection, track transactions, and visualize the value of your cards as they grow!</p>
+              {/* <a href="#get-started" className="cta-btn">Get Started</a> */}
+              <button  className="cta-btn" onClick={() => auth.signinRedirect()}>Get Started</button>
+            </div>
+          </section>
+
+          <section id="features" className="features">
+            <div className="container">
+              <h2>Features</h2>
+              <div className="feature">
+                <h3>Transaction Tracking</h3>
+                <p>Keep a detailed history of your trading card transactions.</p>
+              </div>
+              <div className="feature">
+                <h3>Collection Visualization</h3>
+                <p>View the growth and value of your collection over time with beautiful charts.</p>
+              </div>
+              <div className="feature">
+                <h3>Valuation Insights</h3>
+                <p>Get real-time insights into the market value of your trading cards.</p>
+                <p className='coming-soon'>Coming Soon!</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="pricing" className="pricing">
+            <div className="container">
+              <h2>Pricing</h2>
+              <div className="pricing-tier">
+                <h3>Free Plan</h3>
+                <p>Basic features to help you track your growing collection.</p>
+                <p>$0 / month</p>
+              </div>
+              <div className="pricing-tier">
+                <h3>Pro Plan</h3>
+                <p>Advanced features including valuation insights and data export.</p>
+                {/* <p>$9.99 / month</p> */}
+                <p className='coming-soon'>Coming Soon!</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="get-started" className="get-started">
+            <div className="container">
+              <h2>Ready to Start Tracking Your Cards?</h2>
+              <button className="cta-btn" onClick={() => auth.signinRedirect()}>Sign Up Now</button>
+            </div>
+          </section>
+
+          <footer className="footer">
+            <div className="container">
+              <p>&copy; 2025 Card Stak. All rights reserved.</p>
+            </div>
+          </footer>
+        </div>
+    // <div className='login-page'>
+    //   <h1 className='login-title'>Card Stak</h1>
+    //   <div className='login-buttons'>
+    //     <button className='login-button' onClick={() => auth.signinRedirect()}>Sign in</button>
+    //     <button className='login-button' onClick={() => signOutRedirect()}>Sign out</button>
+    //   </div>
+    // </div>
   );
 }
 
