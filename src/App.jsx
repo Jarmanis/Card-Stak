@@ -34,7 +34,7 @@ function App() {
   const dynamoDb = DynamoDBDocumentClient.from(client);
 
   const [formData, setFormData] = React.useState({
-    date: '',
+    date: new Date().toISOString().split('T')[0],
     cost: '',
     title: '',
     type: 'purchase'
