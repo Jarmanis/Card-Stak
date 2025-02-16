@@ -35,7 +35,7 @@
   gap: 15px;
   margin: 0 0 30px 0;
   height: 40px;
-  align-items: center;
+  
 }
 
 .input-form h3 {
@@ -66,6 +66,7 @@
   font-weight: 500;
   background-color: #4CAF50;
   transition: background-color 0.2s;
+  border-radius: 8px;
 }
 
 .input-form button:hover {
@@ -108,9 +109,7 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.entry-item span {
-  flex: 1;
-  padding: 0 12px;
+.entry-item span { 
   font-size: 15px;
 }
 
@@ -311,6 +310,7 @@ nav ul li a {
   text-decoration: none;
   font-size: 1.1rem;
   border-radius: 5px;
+  border: none;
 }
 
 .cta-btn:hover {
