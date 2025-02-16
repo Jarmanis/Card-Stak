@@ -1,21 +1,20 @@
 .dashboard {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px 20px;
   position: relative;
 }
 
 .page-title {
-  margin: 0 0 30px 0;
-  font-size: 1.8rem;
+  margin-bottom: 30px;
+  font-size: 2rem;
   color: #2c3e50;
-  text-align: center;
 }
 
 .top-nav {
-  position: static;
-  margin-bottom: 20px;
-  text-align: right;
+  position: absolute;
+  top: 40px;
+  right: 20px;
 }
 
 .logout-btn {
@@ -27,39 +26,16 @@
   cursor: pointer;
 }
 
-.input-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 0 0 30px 0;
-  height: auto;
-}
-
-@media (min-width: 768px) {
-  .dashboard {
-    padding: 40px 20px;
-  }
-
-  .page-title {
-    font-size: 2rem;
-    text-align: left;
-  }
-
-  .top-nav {
-    position: absolute;
-    top: 40px;
-    right: 20px;
-  }
-
-  .input-form {
-    flex-direction: row;
-    gap: 15px;
-    height: 40px;
-  }
-}
-
 .logout-btn:hover {
   background-color: #d32f2f;
+}
+
+.input-form {
+  display: flex;
+  gap: 15px;
+  margin: 0 0 30px 0;
+  height: 40px;
+  
 }
 
 .input-form h3 {
