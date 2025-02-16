@@ -136,8 +136,8 @@ function App() {
 
   const signOutRedirect = () => {
     const clientId = "5gh0dubj45gj1oo07ptsiu05ks";
-    const logoutUri = window.location.origin;
-    const cognitoDomain = "https://us-east-1o2mtuw14a.auth.us-east-1.amazoncognito.com";
+    const logoutUri = "https://card-stak.replit.app";
+    const cognitoDomain = "https://us-east-1nuni86pdc.auth.us-east-1.amazoncognito.com";
     window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
   };
 
