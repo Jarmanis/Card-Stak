@@ -32,7 +32,7 @@ function App() {
     })
   });
   const dynamoDb = DynamoDBDocumentClient.from(client);
-  
+
   const [formData, setFormData] = React.useState({
     date: '',
     cost: '',
@@ -44,7 +44,7 @@ function App() {
 
   const fetchEntries = async () => {
     if (!auth.user?.profile.email) return;
-    
+
     try {
       const { QueryCommand } = await import('@aws-sdk/lib-dynamodb');
       const command = new QueryCommand({
@@ -54,7 +54,7 @@ function App() {
           ":userId": auth.user.profile.email
         }
       });
-      
+
       const result = await dynamoDb.send(command);
       setEntries(result.Items || []);
     } catch (error) {
@@ -94,12 +94,12 @@ function App() {
       try {
         console.log('Saving to DynamoDB:', entry);
         console.log('Table name:', import.meta.env.VITE_DYNAMODB_TABLE);
-        
+
         const command = new PutCommand({
           TableName: import.meta.env.VITE_DYNAMODB_TABLE,
           Item: entry
         });
-        
+
         const result = await dynamoDb.send(command);
         console.log('DynamoDB response:', result);
 
@@ -125,7 +125,7 @@ function App() {
           TransactionID: transactionId
         }
       });
-      
+
       await dynamoDb.send(command);
       await fetchEntries();
     } catch (error) {
@@ -201,7 +201,7 @@ function App() {
         {/* <div className="top-nav">
           <button className="logout-btn" onClick={() => auth.removeUser()}>Sign out</button>
         </div> */}
-        
+
         <div className="entries-list">
           <h3>Card Transactions</h3>
           {entries.map(entry => (
