@@ -134,18 +134,16 @@ function App() {
     }
   };
 
-  const signOutRedirect = () => {
-    const clientId = "5gh0dubj45gj1oo07ptsiu05ks";
-    const logoutUri = "https://card-stak.replit.app";
-    const cognitoDomain = "https://us-east-1nuni86pdc.auth.us-east-1.amazoncognito.com";
-    window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
+  const signOutRedirect = async () => {
+    await auth.removeUser();
+    window.location.href = "https://card-stak.replit.app";
   };
 
   if (auth.isLoading) {
     return <div>Loading...</div>;
   }
 
-  if (auth.error) {
+  if (auth.error && !auth.error.message.includes("No matching state found in storage")) {
     return <div>Encountering error... {auth.error.message}</div>;
   }
 
