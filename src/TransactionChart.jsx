@@ -24,7 +24,11 @@ ChartJS.register(
 );
 
 export function TransactionChart({ entries }) {
-  const sortedEntries = [...entries].sort((a, b) => new Date(a.date) - new Date(b.date));
+  const sortedEntries = [...entries].sort((a, b) => {
+    const dateA = new Date(a.date.split('-').join('/'));
+    const dateB = new Date(b.date.split('-').join('/'));
+    return dateA - dateB;
+  });
   
   // Calculate cumulative values
   const cumulativeData = sortedEntries.reduce((acc, entry, index) => {
