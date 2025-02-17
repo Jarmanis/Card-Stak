@@ -31,13 +31,14 @@ export function TransactionChart({ entries }) {
   });
   
   // Create ordered data points
-  const dataPoints = sortedEntries.map((entry, index) => {
-    const previousTotal = index > 0 ? dataPoints[index - 1].total : 0;
-    return {
+  const dataPoints = sortedEntries.reduce((acc, entry) => {
+    const previousTotal = acc.length > 0 ? acc[acc.length - 1].total : 0;
+    acc.push({
       date: entry.date,
       total: previousTotal + (parseFloat(entry.cost) || 0)
-    };
-  });
+    });
+    return acc;
+  }, []);
   
   const data = {
     labels: dataPoints.map(point => point.date),
