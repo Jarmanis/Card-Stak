@@ -25,24 +25,26 @@ ChartJS.register(
 
 export function TransactionChart({ entries }) {
   const sortedEntries = [...entries].sort((a, b) => {
-    const dateA = new Date(a.date.split('-').join('/'));
-    const dateB = new Date(b.date.split('-').join('/'));
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
     return dateA - dateB;
   });
   
-  // Calculate cumulative values
-  const cumulativeData = sortedEntries.reduce((acc, entry, index) => {
-    const currentValue = parseFloat(entry.cost) || 0;
-    acc[index] = (acc[index - 1] || 0) + currentValue;
-    return acc;
-  }, []);
+  // Create ordered data points
+  const dataPoints = sortedEntries.map((entry, index) => {
+    const previousTotal = index > 0 ? dataPoints[index - 1].total : 0;
+    return {
+      date: entry.date,
+      total: previousTotal + (parseFloat(entry.cost) || 0)
+    };
+  });
   
   const data = {
-    labels: sortedEntries.map(entry => entry.date),
+    labels: dataPoints.map(point => point.date),
     datasets: [
       {
         label: 'Cumulative Transactions ($)',
-        data: cumulativeData,
+        data: dataPoints.map(point => point.total),
         borderColor: 'rgb(76, 175, 80)',
         tension: 0.1
       }
