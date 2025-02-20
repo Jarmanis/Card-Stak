@@ -5,7 +5,7 @@ import { AuthProvider } from "react-oidc-context";
 
 const cognitoAuthConfig = {
 	authority: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_nuni86pdc",
-	client_id: "5gh0dubj45gj1oo07ptsiu05ks",
+	client_id: import.meta.env.VITE_COGNITO_CLIENT_ID,
 	redirect_uri: "https://card-stak.replit.app",
 	response_type: "code",
 	scope: "email openid phone",
