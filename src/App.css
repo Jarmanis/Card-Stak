@@ -165,6 +165,8 @@
   font-weight: 500;
   line-height: 1;
   display: inline-block;
+  height: 50%;
+  width: 50%;
 }
 
 .type-badge.purchase {
