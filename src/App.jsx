@@ -157,7 +157,9 @@ function App() {
         <div className="top-nav">
           <button className="logout-btn" onClick={() => signOutRedirect()}>Sign out</button>
           <div className="total-display">
-            Total Balance: ${entries.reduce((sum, entry) => sum + parseFloat(entry.cost), 0).toFixed(2)}
+            Total Balance: <span style={{ color: entries.reduce((sum, entry) => sum + parseFloat(entry.cost), 0) >= 0 ? '#2ecc71' : '#e74c3c' }}>
+              ${entries.reduce((sum, entry) => sum + parseFloat(entry.cost), 0).toFixed(2)}
+            </span>
           </div>
         </div>
         <form onSubmit={handleSubmit} className="input-form">
