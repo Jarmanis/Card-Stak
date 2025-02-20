@@ -24,7 +24,7 @@ function App() {
   const client = new DynamoDBClient({
     region: "us-east-1",
     credentials: fromCognitoIdentityPool({
-      identityPoolId: "us-east-1:fe419dca-de50-4bdb-9887-50a93e412a64",
+      identityPoolId: import.meta.env.VITE_IDENTITY_POOL_ID,
       clientConfig: { region: "us-east-1" },
       logins: {
         'cognito-idp.us-east-1.amazonaws.com/us-east-1_nuni86pdc': auth.user?.id_token
