@@ -155,7 +155,10 @@ function App() {
         {/* <h2>Welcome, {auth.user?.profile.email}</h2> */}
         <h2 className='page-title'>Welcome to Card Stak</h2>
         <div className="top-nav">
-          <button className="logout-btn" onClick={() => auth.removeUser()}>Sign out</button>
+          <button className="logout-btn" onClick={() => signOutRedirect()}>Sign out</button>
+          <div className="total-display">
+            Total Balance: ${entries.reduce((sum, entry) => sum + parseFloat(entry.cost), 0).toFixed(2)}
+          </div>
         </div>
         <form onSubmit={handleSubmit} className="input-form">
           <h3 className='input-form'>Input Card Transaction</h3>
