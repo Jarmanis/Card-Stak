@@ -158,15 +158,15 @@
 }
 
 .type-badge {
-  padding: 2px 6px;
-  border-radius: 3px;
-  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
   text-transform: capitalize;
   font-weight: 500;
-  line-height: 1;
+  width: 80px;
   display: inline-block;
-  height: 50%;
-  width: 50%;
+  text-align: center;
+  margin: auto;
 }
 
 .type-badge.purchase {
