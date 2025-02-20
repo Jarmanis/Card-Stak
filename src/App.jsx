@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 // import { useState } from 'react';
 // import { Dialog, DialogPanel } from '@headlessui/react';
 // import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
@@ -204,7 +205,7 @@ function App() {
           <h3>Card Transactions</h3>
           {entries.map(entry => (
             <div key={entry.TransactionID} className="entry-item">
-              <span>{entry.date}</span>
+              <span>{moment(entry.date).format('MMM D, YYYY')}</span>
               <span style={{ color: entry.cost < 0 ? 'red' : 'green' }}>${entry.cost}</span>
               <span>{entry.title}</span>
               <span className={`type-badge ${entry.type}`}>{entry.type}</span>

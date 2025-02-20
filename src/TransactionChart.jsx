@@ -1,5 +1,6 @@
 
 import React from 'react';
+import moment from 'moment';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -41,7 +42,7 @@ export function TransactionChart({ entries }) {
   }, []);
   
   const data = {
-    labels: dataPoints.map(point => point.date),
+    labels: dataPoints.map(point => moment(point.date).format('MMM D, YYYY')),
     datasets: [
       {
         label: 'Cumulative Transactions ($)',
