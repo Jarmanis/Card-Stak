@@ -8,7 +8,7 @@ Whether you're an amateur or seasoned collector, Card Stak makes managing and tr
 
 ## Getting Started
 - To start from the main [page](https://card-stak.replit.app/) click on "Get Started" or "Sign up Now" button
-- Click "Create Account", use a valid email address and a unique password
+- Click "Create an Account", use a valid email address and a unique password
 - A verification code will be sent to the email, obtain code and submit to verify account.
 - Once your account is confirmed you are all set!
 - Start submitting your data and watch the profit grow!
@@ -27,8 +27,6 @@ Whether you're an amateur or seasoned collector, Card Stak makes managing and tr
 
 ## UI/Styling:
 - Custom styling with modular CSS
-- Headless UI - UI component library (though currently commented out)
-- HeroIcons - Icon library (though currently commented out)
 
 ## Data Visualization
 - Chart.js - Charting library

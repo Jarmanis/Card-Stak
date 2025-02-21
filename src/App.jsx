@@ -301,6 +301,7 @@ function App() {
           <footer className="footer">
             <div className="container">
               <p>&copy; 2025 Card Stak. All rights reserved.</p>
+              <a className="github-link" target="_blank" href='https://github.com/Jarmanis/Card-Stak'>GitHub Repo</a>
             </div>
           </footer>
         </div>
