@@ -22,7 +22,11 @@ export function FeedbackForm({ onClose }) {
         },
         body: JSON.stringify({
           access_key: '9cf96956-b89f-4edb-ad44-b2f0aa22eabc',
-          ...formData,
+          from_name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: 'Card Stak Feedback',
+          form_name: 'Card Stak Feedback Form',
         }),
       });
 
