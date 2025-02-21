@@ -5,6 +5,7 @@ import moment from 'moment';
 // import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useAuth } from "react-oidc-context";
 import { TransactionChart } from './TransactionChart';
+import { FeedbackForm } from './FeedbackForm';
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient, PutCommand } from "@aws-sdk/lib-dynamodb";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
@@ -42,6 +43,7 @@ function App() {
   });
   const [entries, setEntries] = React.useState([]);
   const [showAlert, setShowAlert] = React.useState(false);
+  const [showFeedback, setShowFeedback] = React.useState(false);
 
   const fetchEntries = async () => {
     if (!auth.user?.profile.email) return;
@@ -155,13 +157,17 @@ function App() {
         {/* <h2>Welcome, {auth.user?.profile.email}</h2> */}
         <h2 className='page-title'>Welcome to Card Stak</h2>
         <div className="top-nav">
-          <button className="logout-btn" onClick={() => signOutRedirect()}>Sign out</button>
+          <div className="button-group">
+            <button className="feedback-btn" onClick={() => setShowFeedback(true)}>Feedback</button>
+            <button className="logout-btn" onClick={() => signOutRedirect()}>Sign out</button>
+          </div>
           <div className="total-display">
             Total Balance: <span style={{ color: entries.reduce((sum, entry) => sum + parseFloat(entry.cost), 0) >= 0 ? '#2ecc71' : '#e74c3c' }}>
               ${entries.reduce((sum, entry) => sum + parseFloat(entry.cost), 0).toFixed(2)}
             </span>
           </div>
         </div>
+        {showFeedback && <FeedbackForm onClose={() => setShowFeedback(false)} />}
         <form onSubmit={handleSubmit} className="input-form">
           <h3 className='input-form'>Input Card Transaction</h3>
           <input
