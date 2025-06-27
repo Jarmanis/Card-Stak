@@ -139,7 +139,7 @@ function App() {
 
   const signOutRedirect = async () => {
     await auth.removeUser();
-    window.location.href = "https://card-stak.replit.app";
+    window.location.href = "https://card-stak.com";
   };
 
   if (auth.isLoading) {
@@ -285,7 +285,7 @@ function App() {
               <div className="pricing-tier">
                 <h3>Pro Plan</h3>
                 <p>Advanced features including valuation insights and data export.</p>
-                {/* <p>$9.99 / month</p> */}
+                {/* <p>/p> */}
                 <p className='coming-soon'>Coming Soon!</p>
               </div>
             </div>
