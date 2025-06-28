@@ -128,3 +128,9 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# AWS 
+VITE_DYNAMODB_TABLE=arn:aws:dynamodb:us-east-1:010438501645:table/card-data
+VITE_COGNITO_USER_POOL_ID=us-east-1_nuni86pdc
+VITE_COGNITO_CLIENT_ID=5gh0dubj45gj1oo07ptsiu05ks
+VITE_COGNITO_REGION=us-east-1
