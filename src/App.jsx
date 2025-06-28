@@ -44,7 +44,7 @@ function App() {
   const [entries, setEntries] = React.useState([]);
   const [showAlert, setShowAlert] = React.useState(false);
   const [showFeedback, setShowFeedback] = React.useState(false);
-
+  console.log('DynamoDB Table:', import.meta.env.VITE_DYNAMODB_TABLE);
   const fetchEntries = async () => {
     if (!auth.user?.profile.email) return;
 
