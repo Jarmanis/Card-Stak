@@ -22,6 +22,7 @@ import './App.css';
 
 
 function App() {
+  console.log('DynamoDB Table:', import.meta.env.VITE_DYNAMODB_TABLE);
   const auth = useAuth();
   const client = new DynamoDBClient({
     region: "us-east-1",
