@@ -249,7 +249,7 @@ function App() {
           <section className="hero">
             <div className="container">
               <h2>Track Your Profits, Visualize Your Collection's Financial Growth</h2>
-              <p>Card Stak helps you manage your trading card collection, track transactions, and visualize the value of your cards as they grow!</p>
+              <p>Manage your trading card collection, track transactions, and visualize the value of your cards as they grow!</p>
               {/* <a href="#get-started" className="cta-btn">Get Started</a> */}
               <button  className="cta-btn" onClick={() => auth.signinRedirect()}>Get Started</button>
             </div>
